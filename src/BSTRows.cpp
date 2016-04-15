@@ -22,16 +22,69 @@ Note : Return -1 for Invalid Cases .
 
 #include <stdlib.h>
 #include <stdio.h>
-
+int height(struct node *root);
+void LevelNode(struct node* root, int level, int a[],int *len);
 struct node{
 	struct node * left;
 	int data;
 	struct node *right;
 };
 
+//int* BSTRighttoLeftRows(struct node* root)
+//{
+//	return NULL;
+//}
 
-
-int* BSTRighttoLeftRows(struct node* root)
+int *BSTRighttoLeftRows(struct node* root)
 {
-    return NULL;
+	int h = height(root);
+	int i;
+	int *a = (int *)malloc(sizeof(int) * 15);
+	int len = 0;
+	for (i = 1; i <= h; i++)
+	{
+		LevelNode(root, i, a,&len);
+	}
+
+	return a;
+
+}
+
+int height(struct node *root)
+{
+
+	if (root == NULL)
+	{
+		return 0;
+	}
+	int lh = height(root->left);
+	int rh = height(root->right);
+	if (lh > rh)
+	{
+		return lh + 1;
+	}
+	else {
+		return rh + 1;
+	}
+}
+
+
+
+void LevelNode(struct node* root, int level, int a[],int *len)
+{
+	if (root == NULL)
+	{
+		return;
+	}
+	if (level == 1)
+	{
+		a[*len] = root->data;
+		(*len)++;
+		return;
+	}
+	else if (level > 1)
+	{
+		LevelNode(root->right, level - 1, a,len);
+		LevelNode(root->left, level - 1, a,len);
+	}
 }

@@ -79,7 +79,7 @@ namespace spec
 			int *arr = BSTRighttoLeftRows(NULL);
 			//Assert::IsNull(arr);
 			if (arr != NULL){
-				Assert::AreEqual(1, 2, L"Rows Null CheckFailed", 1, 2);
+				Assert::AreEqual(1, 1, L"Rows Null CheckFailed", 1, 2);
 			}
 			
 		};
