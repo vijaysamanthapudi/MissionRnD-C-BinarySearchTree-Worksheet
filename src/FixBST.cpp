@@ -49,9 +49,7 @@ void fix_bst(struct node *root)
 		swap(&(first->data), &(middle->data));
 
 }
-void correctBSTUtil(struct node* root, struct node** first,
-struct node** middle, struct node** last,
-struct node** prev)
+void correctBSTUtil(struct node* root, struct node** first,struct node** middle, struct node** last,struct node** prev)
 {
 	if (root)
 	{
